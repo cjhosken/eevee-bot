@@ -5,12 +5,16 @@ from dotenv import load_dotenv
 from dotenv.main import dotenv_values
 
 client = commands.Bot(command_prefix=".")
-config = dotenv_values(".env")
-token = config['CYCLES_X_BOT_TOKEN']
+
+if os.path.exists("../.env"):
+    config = dotenv_values(".env")
+    token = config['CYCLES_X_BOT_TOKEN']
+else:
+    token = os.getenv("CYCLES_X_BOT_TOKEN")
 
 @client.event
 async def on_ready() :
-    await client.change_presence(status = discord.Status.idle, activity = discord.Game("Currently in development."))
+    await client.change_presence(status = discord.Status.online, activity=discord.Game(name="with feelings..."))
     print("I am online")
 
 @client.command()
