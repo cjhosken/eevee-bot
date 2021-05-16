@@ -30,3 +30,16 @@ async def clear(ctx, amount=3) :
     await ctx.channel.purge(limit=amount)
 
 client.run(token)
+
+"""
+Here are some ideas I have.
+1. We should be able to move all our other bot commands (from mee6, dyno), into this app.
+
+2. .challenge command. This allows you to challenge someone to a modelling duel
+
+3. maybe something about XP? Idk
+
+4. automating alot of tasks, (Events, etc) perhaps better social media control.
+
+5. Better roles
+"""
