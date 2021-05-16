@@ -7,7 +7,7 @@ the Cycles-X bot is a bot designed for the Blender Community Discord. Its purpos
 ## 💻Setup
 If you want to use this program for your own bots, you will need to setup the token variable. 
 
-In the main folder, create a `.env` file, then in the file write the line `CYCLES_X_BOT_TOKEN=""`. You can then entire your bot token ID and the bot should run.
+In the main folder, create a `.env` file, then in the file write the line `CYCLES_X_BOT_TOKEN=""`. You can then enter your bot token ID and the bot should run.
 
 ## ❗Commands
 *.help* - displays list of avaliable commands
