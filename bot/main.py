@@ -1,25 +1,48 @@
 import discord
 from discord.ext import commands
 import os
-from dotenv import load_dotenv
+import re
 from dotenv.main import dotenv_values
 
-client = commands.Bot(command_prefix=".")
+prefix = "."
+emojis = []
+client = commands.Bot(command_prefix=prefix)
 
-if os.path.exists("../.env"):
+try:
     config = dotenv_values(".env")
     token = config['CYCLES_X_BOT_TOKEN']
-else:
+except:
     token = os.getenv("CYCLES_X_BOT_TOKEN")
 
 @client.event
 async def on_ready() :
-    await client.change_presence(status = discord.Status.online, activity=discord.Game(name="with feelings..."))
-    print("I am online")
+    client.change_presence(status = discord.Status.online, activity=discord.Game(name="with feelings..."))
+    print("Bot Online.")
+    for e in client.emojis:
+        emojis.append(str(e))
 
 @client.command()
 async def ping(ctx) :
     await ctx.send(f"🏓 Pong with {str(round(client.latency, 2))}")
+
+@client.event
+async def on_message(message):
+    f = ""
+    e = None
+    if message.content.startswith(".") and message.content.endswith("."):
+        msg = str(message.content)[1:][:-1]
+        pat = ":(.*?):"
+        for e in client.emojis:
+            f = re.search(pat, str(e)).group(1)
+            if (f == msg):
+                print(f"Found '{f}': {e}")
+                break
+        else:
+            e = None
+
+        await message.delete()
+        if e is not None:
+            await message.channel.send(e)
 
 @client.command(name="whoami")
 async def whoami(ctx) :
