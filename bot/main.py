@@ -1,9 +1,9 @@
-from discord.ext import commands
 import os
+from discord.ext import commands
 from dotenv.main import dotenv_values
 
-prefix = '.'
-bot = commands.Bot(command_prefix = prefix)
+prefix = '/'
+bot = commands.Bot(command_prefix = prefix, help_command=None)
 
 try:
     config = dotenv_values("./.env")
