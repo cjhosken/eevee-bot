@@ -27,3 +27,9 @@ Released under the [GNU General Public License v3.0](https://www.gnu.org/license
 [Matthias Westhoff]("https:github.com/Matthias-Westhoff") - *Initial Development*
 
 [Python Discord Bot](https://dev.to/p014ri5/making-and-deploying-discord-bot-with-python-4hep)
+
+[emoji.py](https://github.com/animeforreal/Not-Quite-Nitro-Python)
+### Images
+[8Ball Icon](https://cdn4.iconfinder.com/data/icons/sports-flat-2/48/Billiard-512.png)
+
+
