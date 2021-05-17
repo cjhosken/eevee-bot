@@ -1,21 +1,17 @@
-import discord
-from discord import client
 from discord.ext import commands
-import random
 import os
-import re
 from dotenv.main import dotenv_values
 
 prefix = '.'
 bot = commands.Bot(command_prefix = prefix)
 
 try:
-    config = dotenv_values(".env")
+    config = dotenv_values("./.env")
     token = config['CYCLES_X_BOT_TOKEN']
 except:
     token = os.getenv("CYCLES_X_BOT_TOKEN")
 
-for file in os.listdir('bot\\cogs'):
+for file in os.listdir('bot/cogs'):
     if file.endswith('.py'):
         bot.load_extension(f'cogs.{file[:-3]}')
 
