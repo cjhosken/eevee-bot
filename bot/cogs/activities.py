@@ -24,23 +24,6 @@ class Activities(commands.Cog):
         embed.add_field(name="Answer", value=random.choice(responses), inline=False)
 
         await ctx.send(embed=embed)
-    
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        emoji_pattern = ":(.*?):"
-        if message.content.startswith("<") and message.content.endswith(">"):
-            msg = str(message.content)[1:][:-1]
-            for e in self.bot.emojis:
-                f = re.search(emoji_pattern, str(e)).group(1)
-                if (f == msg):
-                    print(f"Found '{f}': {str(e)}")
-                    break
-            else:
-                e = None
-
-            if e is not None:
-                await message.delete()
-                await message.channel.send(str(e))
 
 
 def setup(bot):
