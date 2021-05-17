@@ -21,10 +21,6 @@ class Core(commands.Cog):
     @commands.command()
     async def clear(self, ctx, amount=1):
         await ctx.channel.purge(limit=amount)
-    
-    @commands.command
-    async def on_message(self, message):
-        Activities.detectEmoji(message)
 
     @commands.Cog.listener()
     async def on_member_join(member):
