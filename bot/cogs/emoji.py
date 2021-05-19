@@ -5,6 +5,10 @@ from discord import utils
 class Emoji(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print("CYCLES-X: Emojis loaded")
     
     async def getEmote(self, arg):
         emoji = utils.get(self.bot.emojis, name = arg.strip(":"))
@@ -89,10 +93,6 @@ class Emoji(commands.Cog):
 
                 await webhook.send(ret, username= message.author.display_name, avatar_url = message.author.avatar_url)
                 await message.delete()
-
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print("CYCLES-X: Emojis loaded")
 
 def setup(bot):
     bot.add_cog(Emoji(bot))
