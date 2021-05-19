@@ -56,11 +56,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
 class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.queue = {}
-        self.queueSize = 0
-        self.queueUser = {}
-        self.qID = 0
-        self.loopQ = 0
 
     @commands.command()
     async def _join(self, ctx, channel : discord.VoiceChannel = None):
@@ -70,19 +65,19 @@ class Music(commands.Cog):
         if ctx.author.voice is None:
             embed = discord.Embed(color=discord.Color.red(), description=f"Please join a voice channel to use that command!")
             return await ctx.send(embed=embed)  
-        
+
         if channel is None:
             channel = discord.utils.get(ctx.guild.voice_channels, name=str(ctx.author.voice.channel))
 
         return await channel.connect()
 
-    
+
     @commands.command()
     async def _play(self, ctx, *, url=None, search=None):
         if ctx.author.voice is None:
             embed = discord.Embed(color=discord.Color.red(), description=f"Please join a voice channel to use that command!")
             return await ctx.send(embed=embed)
-        
+
         if discord.utils.get(self.bot.voice_clients, guild=ctx.guild) is None:
             channel = discord.utils.get(ctx.guild.voice_channels, name=str(ctx.author.voice.channel))
             await channel.connect()
@@ -98,17 +93,11 @@ class Music(commands.Cog):
 
         player = await YTDLSource.from_url(url, loop=self.bot.loop)
 
-        if len(self.queue) == 0:
-            self.queue[0] = player
-            self.queueUser[0] = ctx.message.author
-            self.queueSize += 1
-            await self.playQueue(ctx)
-        else:
-            self.queueUser[len(self.queue)] = ctx.message.author
-            self.queue[len(self.queue)] = player
-            self.queueSize += 1
+        ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
+        embed = discord.Embed(color=discord.Color.blue())
+        embed.add_field(name="Now Playing", value=f"[{player.title}]({player.url}) [{ctx.message.author.mention}]")
+        await ctx.send(embed=embed)
 
-    
     @commands.command()
     async def _pause(self, ctx):
         await ctx.message.add_reaction('⏸')
@@ -118,7 +107,7 @@ class Music(commands.Cog):
         else:
             embed = discord.Embed(color=discord.Color.red(), description=f"No audio is playing!")
             await ctx.send(embed=embed)
-    
+
     @commands.command()
     async def _resume(self, ctx): 
         await ctx.message.add_reaction('▶')
@@ -156,13 +145,13 @@ class Music(commands.Cog):
 
         else:
             await ctx.voice_client.disconnect()
-        
+
         self.cache()
 
     @commands.command()
     async def _sound(self, ctx, *, query):
         await ctx.message.add_reaction('🎶')
-        
+
         if ctx.author.voice is None:
             embed = discord.Embed(color=discord.Color.red(), description=f"Please join a voice channel to use that command!")
             return await ctx.send(embed=embed)  
@@ -170,70 +159,6 @@ class Music(commands.Cog):
         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
         ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
         await ctx.send(f'Now playing: {query}')
-
-    @commands.command()
-    async def _volume(self, ctx, volume: int):
-        await ctx.message.add_reaction('🔈')
-
-        if ctx.author.voice is None:
-            embed = discord.Embed(color=discord.Color.red(), description=f"Please join a voice channel to use that command!")
-            return await ctx.send(embed=embed)  
-
-        if ctx.voice_client is None:
-            embed = discord.Embed(color=discord.Color.red(), description=f"I'm not connected to your voice channel!")
-            return await ctx.send(embed=embed)
-
-        ctx.voice_client.source.volume = volume / 100
-        await ctx.send(f"Changed volume to {volume}%")
-    
-    @commands.command()
-    async def _loop(self, ctx):
-        self.loopQ += 1
-
-        if self.loopQ == 3:
-            self.loopQ = 0
-
-        if (self.loopQ == 0):
-            await ctx.send(embed=discord.Embed(color=discord.Color.blue(), description=f"Looping is now **disabled**."))
-
-        elif (self.loopQ == 1):
-            await ctx.send(embed=discord.Embed(color=discord.Color.blue(), description=f"Now looping the **queue**."))
-
-        elif (self.loopQ == 2):
-            await ctx.send(embed=discord.Embed(color=discord.Color.blue(), description=f"Now looping the **current track**."))
-
-    @commands.command()
-    async def _next(self, ctx):
-        if (self.qID < self.queueSize):
-            self.qID += 1
-            ctx.voice_client.stop()
-            await self.playQueue(ctx)
-        
-        else:
-            await ctx.send("cannot skip to next track!")
-
-    @commands.command()
-    async def _last(self, ctx):
-        if (self.qID > 0):
-            self.qID -= 1
-            ctx.voice_client.stop()
-            await self.playQueue(ctx)
-        else:
-            await ctx.send("cannot go back to previous track!")
-
-    @commands.command()
-    async def _shuffle(self, ctx):
-        pass
-
-    @commands.command
-    async def _list(self, ctx):
-        pass
-
-
-    @commands.command()
-    async def _clear(self, ctx):
-        self.queue = {}
-        self.qID = 0
 
     def cache(self):
         self.qID = 0
@@ -244,34 +169,11 @@ class Music(commands.Cog):
             '.mp3',
             '.wav'
         ]
+
         for f in os.listdir(path):
             for e in ext:
                 if f.endswith(e):
                     os.remove(os.path.join(path, f))
-
-    async def playQueue(self, ctx):
-        while self.qID < len(self.queue):
-            try:
-                ctx.voice_client.play(self.queue[self.qID], after=lambda e: print(f'Player error: {e}') if e else None)
-                embed = discord.Embed(color=discord.Color.blue())
-                embed.add_field(name="Now Playing", value=f"[{self.queue[self.qID].title}]({self.queue[self.qID].url}) [{self.queueUser[self.qID].mention}]")
-                await ctx.send(embed=embed)
-            except Exception as e:
-                embed = discord.Embed(color=discord.Color.blue())
-                embed.add_field(name="Queued", value=f"[{self.queue[self.qID].title}]({self.queue[self.qID].url}) [{self.queueUser[self.qID].mention}]")
-                await ctx.send(embed=embed)
-
-            if (self.loopQ != 2):
-                self.qID += 1
-            
-        
-        if (self.loopQ == 1):
-            self.qID = 0
-        else:
-            self.queue = {}
-            self.qID = 0
-
-
 
 def setup(bot):
     bot.add_cog(Music(bot))
