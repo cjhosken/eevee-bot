@@ -28,7 +28,7 @@ bot.run(token)
 #
 #       @commands.Cog.listener()
 #       async def on_ready(self):
-#           print('template loaded')
+#           print('CYCLES-X: template loaded')
 #
 #       @commands.command()
 #       async def test(self, ctx):
