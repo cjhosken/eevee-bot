@@ -79,17 +79,11 @@ class Activities(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command()
-    async def freeXP(self, ctx):
-        embed = discord.Embed(title="Whoosh! ", color=discord.Color.gold(), description="You just gained more xp!")
-        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-        await ctx.message.delete()
-        await ctx.send(embed=embed)
-
-    @commands.command()
     async def inspire(self, ctx):
         prompt = self.get_prompt()
 
         embed = discord.Embed(title="Inspiration! 💡", color=discord.Color.gold(), description=prompt)
+        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
         await ctx.message.delete()
         await ctx.send(embed=embed)
         

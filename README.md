@@ -1,8 +1,7 @@
 # Cycles-X Bot
 
-
 ## ❓About
-the Cycles-X bot is a bot designed for the Blender Community Discord. Its purpose is to assist server users with blender-related topics, and provide some fun activities for them to use.
+The Cycles-X bot is a bot designed for the Blender Community Discord. Its purpose is to assist server users with blender-related topics, and provide some fun activities for them to use.
 
 ## 💻Setup
 If you want to use this program for your own bots, you will need to setup the token variable. 
