@@ -16,6 +16,11 @@ class Core(commands.Cog):
         await ctx.send(f'Pong! {round(self.bot.latency * 1000)}ms')
         print(f"WORKBENCH: Pinged! {round(self.bot.latency * 1000)}ms")
 
+    @commands.command()
+    async def help(self, ctx, label : str = None):
+        if label != "workbench":
+            return
+
     @commands.Cog.listener()
     async def on_member_join(self, member):
         channel = self.bot.get_channel(845932856613142568)

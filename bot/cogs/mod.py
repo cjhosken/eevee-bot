@@ -13,12 +13,6 @@ class Moderation(commands.Cog):
     @commands.has_any_role('Host', 'Moderator')
     async def wipe(self, ctx, amount = 1):
         await ctx.channel.purge(limit = amount + 1)
-
-    # Needs to be implemented
-    @commands.command()
-    @commands.has_any_role('Host', 'Moderator')
-    async def warn(self, ctx, member):
-        return
     
     @commands.command()
     @commands.has_any_role('Host', 'Moderator')

@@ -31,17 +31,5 @@ class Automation(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command()
-    async def youtube(self, ctx, search : str = None):
-        if search is None:
-            embed = discord.Embed(color=discord.Color.red(), description=f"You need to search something!")
-            return await ctx.send(embed=embed)
-        else:
-            html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + search)
-            vids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
-            url = "https://www.youtube.com/watch?v=" + vids[0]
-            return await ctx.send(url)
-
-
 def setup(bot):
     bot.add_cog(Automation(bot))
