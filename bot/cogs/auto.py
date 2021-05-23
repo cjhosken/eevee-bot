@@ -11,7 +11,7 @@ class Automation(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('CYCLES-X: automation loaded')
+        print('WORKBENCH: automation loaded')
 
     @commands.command(aliases=["torga"])
     async def torus(self, ctx):
@@ -41,55 +41,6 @@ class Automation(commands.Cog):
             vids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
             url = "https://www.youtube.com/watch?v=" + vids[0]
             return await ctx.send(url)
-    
-    @commands.command()
-    @commands.has_any_role('Host')
-    async def skillroles(self, ctx):
-        advanced = str(discord.utils.get(self.bot.emojis, name="andrew5head"))
-        intermediate = str(discord.utils.get(self.bot.emojis, name="andrewnice"))
-        beginner = str(discord.utils.get(self.bot.emojis, name="andrewsurprised"))
-
-        embed = discord.Embed(title="Roles: About You", color=discord.Color.blue(), description="React to choose your role.")
-        embed.add_field(name="\u200b", value=f"{advanced} : `Advanced`")
-        embed.add_field(name="\u200b", value=f"{intermediate} : `Intermediate`")
-        embed.add_field(name="\u200b", value=f"{beginner} : `Beginner`")
-        await ctx.message.delete()
-        await ctx.send(embed=embed)
-
-    @commands.command()
-    @commands.has_any_role('Host')
-    async def talentroles(self, ctx):
-        default = str(discord.utils.get(self.bot.emojis, name="default"))
-        bcom = str(discord.utils.get(self.bot.emojis, name="blendercommunity"))
-
-        embed = discord.Embed(title="Roles: About You", color=discord.Color.blue(), description="React to choose your role.")
-        embed.add_field(name="\u200b", value=f"{bcom} : `Blenderer`")
-        embed.add_field(name="\u200b", value=":art: : `Concept Artist`")
-        embed.add_field(name="\u200b", value=":computer: : `Programmer`")
-        embed.add_field(name="\u200b", value=":paintbrush: : `2D Artist`")
-        embed.add_field(name="\u200b", value=f"{default} : `3D Generalist`")
-        embed.add_field(name="\u200b", value=":video_game: : `Game Artist`")
-        embed.add_field(name="\u200b", value=":boom: : `VFX Artist`")
-        embed.add_field(name="\u200b", value=":man_mage: : `Texture Artist`")
-        embed.add_field(name="\u200b", value=":hammer_pick: : `Sculptor`")
-        embed.add_field(name="\u200b", value=":doughnut: : `Modeller`")
-        embed.add_field(name="\u200b", value=":bone: : `Rigger`")
-        embed.add_field(name="\u200b", value=":person_standing: : `Animator`")
-        embed.add_field(name="\u200b", value=":clapper: : `Filmmaker`")
-        embed.add_field(name="\u200b", value=":musical_keyboard: : `Musician`")
-        embed.add_field(name="\u200b", value=":pencil: : `Student`")
-        await ctx.message.delete()
-        await ctx.send(embed=embed)
-
-    @commands.command()
-    @commands.has_any_role('Host')
-    async def abilityroles(self, ctx):
-        embed = discord.Embed(title="Roles: Server Abilities", color=discord.Color.blue(), description="React to choose your role.")
-        embed.add_field(name="\u200b", value=f":innocent: : `Helper`")
-        embed.add_field(name="\u200b", value=f":person_fencing: : `Challenger`")
-        embed.add_field(name="\u200b", value=f":raised_hand: : `Recieves @everyone`")
-        await ctx.message.delete()
-        await ctx.send(embed=embed)
 
 
 def setup(bot):

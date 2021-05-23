@@ -8,7 +8,7 @@ class Emoji(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print("CYCLES-X: Emojis loaded")
+        print("WORKBENCH: Emojis loaded")
     
     async def getEmote(self, arg):
         emoji = utils.get(self.bot.emojis, name = arg.strip(":"))
@@ -87,9 +87,9 @@ class Emoji(commands.Cog):
             
             if em:
                 webhooks = await message.channel.webhooks()
-                webhook = utils.get(webhooks, name = "CYCLES-X")
+                webhook = utils.get(webhooks, name = "WORKBENCH")
                 if webhook is None:
-                    webhook = await message.channel.create_webhook(name = "CYCLES-X")
+                    webhook = await message.channel.create_webhook(name = "WORKBENCH")
 
                 await webhook.send(ret, username= message.author.display_name, avatar_url = message.author.avatar_url)
                 await message.delete()

@@ -10,7 +10,7 @@ class Activities(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print("CYCLES-X: Activities loaded")
+        print("WORKBENCH: Activities loaded")
 
     @commands.command(aliases=['8ball'])
     async def blenderball(self, ctx, *, question):
@@ -49,34 +49,6 @@ class Activities(commands.Cog):
         embed.set_thumbnail(url="https://cdn4.iconfinder.com/data/icons/sports-flat-2/48/Billiard-512.png")
 
         await ctx.send(embed=embed)
-
-    @commands.command()
-    async def duel(self, ctx, opponents: commands.Greedy[discord.Member], time):
-        if opponents != None:
-            topics = [
-                'Space',
-                'Aliens',
-                'Science',
-                'Robots',
-                ''
-            ]
-
-            opponentsNick = []
-
-            for opponent in opponents:
-                opponentsNick.append(opponent.nick)
-
-            endTime = datetime.datetime.now(tz=datetime.tzinfo("GMT"))+datetime.timedelta(minutes=float(time))
-            endTimeString = endTime.strftime("%H:%M:%S")
-
-            str1 = " vs ".join(opponentsNick)
-            embed = discord.Embed(title="Blender Duel", color=discord.Color.blue())
-            embed.add_field(name="Players", value=str1, inline=False)
-            embed.add_field(name="Topic", value=random.choice(topics), inline=False)
-
-            embed.add_field(name="Time", value=f"{endTimeString} {endTime.tzname()}", inline=False)
-
-            await ctx.send(embed=embed)
 
     @commands.command()
     async def inspire(self, ctx):

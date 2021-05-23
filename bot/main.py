@@ -7,9 +7,9 @@ bot = commands.Bot(command_prefix = prefix, help_command=None)
 
 try:
     config = dotenv_values("./.env")
-    token = config['CYCLES_X_BOT_TOKEN']
+    token = config['WORKBENCH_BOT_TOKEN']
 except:
-    token = os.getenv("CYCLES_X_BOT_TOKEN")
+    token = os.getenv('WORKBENCH_BOT_TOKEN')
 
 for file in os.listdir('bot/cogs'):
     if file.endswith('.py'):

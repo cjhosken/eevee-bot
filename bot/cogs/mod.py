@@ -7,11 +7,7 @@ class Moderation(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('CYCLES-X: moderation loaded')
-
-    @commands.command()
-    async def test(self, ctx):
-        await ctx.send("This is a template!")
+        print('WORKBENCH: moderation loaded')
 
     @commands.command()
     @commands.has_any_role('Host', 'Moderator')
@@ -22,24 +18,6 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_any_role('Host', 'Moderator')
     async def warn(self, ctx, member):
-        return
-    
-    # Needs to be implemented
-    @commands.command()
-    @commands.has_any_role('Host', 'Moderator')
-    async def kick(self, ctx, member):
-        return
-
-    # Needs to be implemented
-    @commands.command()
-    @commands.has_any_role('Host', 'Moderator')
-    async def ban(self, ctx, member):
-        return
-
-    # Needs to be implemented
-    @commands.command()
-    @commands.has_any_role('Host', 'Moderator')
-    async def mute(self, ctx, member):
         return
     
     @commands.command()
