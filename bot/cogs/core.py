@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands.core import command
+import json, random
 class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -18,8 +18,16 @@ class Core(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
+        channel = self.bot.get_channel(845932856613142568)
         role = discord.utils.get(member.server.roles, id="632745837855899662")
+
+        f = open('./bot/data/welcome.json')
+        data = json.load(f)
+
+        msg = data["welcomes"][random.randrange(0, len(data["welcomes"]))]
+
         await self.add_roles(member, role)
+        await channel.send(msg)
         print(f"WORKBENCH: {member} has joined.")
 
     @commands.Cog.listener()
