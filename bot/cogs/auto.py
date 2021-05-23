@@ -27,7 +27,7 @@ class Automation(commands.Cog):
 
         embed.add_field(name="Search", value="Search! Go online, there's a high chance that someone else has had the same problem as you.", inline=False)
 
-        embed.set_footer(text="If you are still unable to find a solution after following these steps, then you can ask in #help.")
+        embed.set_footer(text="If you are still unable to find a solution after following these steps, then you should ask in #help.")
 
         await ctx.send(embed=embed)
 
