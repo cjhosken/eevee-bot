@@ -12,7 +12,6 @@ class Core(commands.Cog):
         print("WORKBENCH: Bot online")
         await self.bot.change_presence(status = discord.Status.online, activity = discord.Game(name="Blender"))
 
-
     @commands.command()
     @commands.has_any_role('Host', 'Moderator')
     async def ping(self, ctx):
@@ -25,8 +24,8 @@ class Core(commands.Cog):
         channel = self.bot.get_channel(845932856613142568)
         role = discord.utils.get(member.server.roles, id="632745837855899662")
 
-        phrases = json.load(open('./bot/data/phrases.json'))
-        msg = random.choice(phrases["welcomes"])
+        phrases = open('./bot/data/welcomes.txt').readlines()
+        msg = random.choice(phrases)
         l = msg.split("%")
         for w in l:
             if w == "*":
