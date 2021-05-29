@@ -21,7 +21,7 @@ class Core(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        channel = self.bot.get_channel(845932856613142568)
+        channel = self.bot.get_channel("845932856613142568")
         role = discord.utils.get(member.server.roles, id="632745837855899662")
 
         phrases = open('./bot/data/welcomes.txt').readlines()
@@ -34,13 +34,15 @@ class Core(commands.Cog):
         msg = w.join()
 
         await self.add_roles(member, role)
-        await channel.send(msg)
-        print(f"WORKBENCH: {member} has joined.")
+        await channel.send(f"WORKBENCH: {member} has joined.")
+        #print(f"WORKBENCH: {member} has joined.")
 
 
     @commands.Cog.listener()
-    async def on_member_remove(member):
-        print(f"WORKBENCH: {member} has left.")
+    async def on_member_remove(self, member):
+        channel = self.bot.get_channel("845932856613142568")
+        await channel.send(f"WORKBENCH: {member} has left.")
+        #print(f"WORKBENCH: {member} has left.")
 
 
 def setup(bot):
