@@ -5,12 +5,14 @@ class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
     @commands.Cog.listener()
     async def on_ready(self):
         print("WORKBENCH: Core loaded")
-        print("WORKBENCH: Bot online")
         await self.bot.change_presence(status = discord.Status.online, activity = discord.Game(name="Blender"))
+        print("Logged in as")
+        print(self.bot.user.name)
+        print(self.bot.user.id)
+        print("< - - - - - >")
 
     @commands.command()
     @commands.has_any_role('Host', 'Moderator')
@@ -21,20 +23,15 @@ class Core(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        channel = await self.bot.fetch_channel("845932856613142568")
+        print("Member: " + member.name + " has joined.")
+
+        channel = await self.bot.fetch_channel(845932856613142568)
 
         phrases = open('./bot/data/welcomes.txt').readlines()
         msg = random.choice(phrases)
-        l = msg.split("%")
-        for w in l:
-            if w == "*":
-                w == f"@{member.name}"
+        msg = re.sub("@", f"{member.mention}", msg)
 
-        msg = w.join()
-
-        embed = discord.Embed(color=discord.Color.blue(), description=msg)
-
-        await channel.send(embed=embed)
+        await channel.send(msg)
 
 
 def setup(bot):
