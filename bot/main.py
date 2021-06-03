@@ -6,10 +6,10 @@ from dotenv.main import dotenv_values
 prefix = '/'
 bot = commands.Bot(command_prefix = prefix, help_command=None, intent=Intents(members=True))
 
-try:
+if os.path.exists("./.env"):
     config = dotenv_values("./.env")
     token = config['WORKBENCH_BOT_TOKEN']
-except:
+else:
     token = os.getenv('WORKBENCH_BOT_TOKEN')
 
 for file in os.listdir('bot/cogs'):
