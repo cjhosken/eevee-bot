@@ -1,9 +1,5 @@
-
-
 import discord
 from discord.ext import commands
-import urllib
-import re
 
 class Automation(commands.Cog):
     def __init__(self, bot):

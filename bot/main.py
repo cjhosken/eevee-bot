@@ -1,10 +1,10 @@
 import os
-from discord import Intents
 from discord.ext import commands
+from discord.flags import Intents
 from dotenv.main import dotenv_values
 
 prefix = '/'
-bot = commands.Bot(command_prefix = prefix, help_command=None, intents=Intents(members=True))
+bot = commands.Bot(command_prefix = prefix, help_command=None, intent=Intents(members=True))
 
 try:
     config = dotenv_values("./.env")
