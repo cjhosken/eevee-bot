@@ -5,17 +5,11 @@ class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print("WORKBENCH: Core loaded")
-        print("WORKBENCH: Bot online")
-        await self.bot.change_presence(status = discord.Status.online, activity = discord.Game(name="Blender"))
-
     @commands.command()
-    @commands.has_any_role('Host', 'Moderator')
+    #@commands.has_any_role('Host', 'Moderator')
     async def ping(self, ctx):
         print(f"WORKBENCH: Pinged! {round(self.bot.latency * 1000)}ms")
-        await ctx.send(f'Pong! {round(self.bot.latency * 1000)}ms')
+        await ctx.reply(f'Pong! {round(self.bot.latency * 1000)}ms')
 
     @commands.Cog.listener()
     async def on_member_join(self, member):

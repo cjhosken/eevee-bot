@@ -5,18 +5,15 @@ class Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print('WORKBENCH: moderation loaded')
-
     @commands.command()
-    @commands.has_any_role('Host', 'Moderator')
+    #@commands.has_any_role('Host', 'Moderator')
     async def wipe(self, ctx, amount = 1):
         await ctx.channel.purge(limit = amount + 1)
     
     @commands.command()
-    @commands.has_any_role('Host', 'Moderator')
+    #@commands.has_any_role('Host', 'Moderator')
+    @commands.has_permissions(kick_members=True)
+    
     async def slowmode(self, ctx, seconds : int):
         await ctx.channel.edit(slowmode_delay=seconds)
 
@@ -27,7 +24,6 @@ class Moderation(commands.Cog):
 
         await ctx.message.delete()
         await ctx.send(embed=embed)
-
 
 def setup(bot):
     bot.add_cog(Moderation(bot))
