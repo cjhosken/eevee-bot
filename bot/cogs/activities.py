@@ -6,8 +6,9 @@ class Activities(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
-    @commands.command(aliases=['blendball'])
+    @commands.command(
+        aliases=['blendball','8b','8ball']
+        )
     async def blenderball(self, ctx, *, question : str = None):
         if question is None:
             return await ctx.reply("You need to ask a question!")
@@ -16,7 +17,8 @@ class Activities(commands.Cog):
 
         embed = discord.Embed(
             title="Blender Ball", 
-            color=discord.Color.dark_purple()
+            #color=discord.Color.dark_purple()
+            color=SECONDARY_COLOR
             )
         embed.add_field(name="Question", value=question, inline=False)
         embed.add_field(name="Answer", value=random.choice(responses), inline=False)

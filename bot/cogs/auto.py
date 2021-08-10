@@ -19,11 +19,11 @@ class Automation(commands.Cog):
         
         embed.set_thumbnail(url="https://i.imgur.com/DSjC4x3.png")
         
-        embed.add_field(name= "Think"  , value= "Think! Use your brain! Start by figuring out where your problem is, and think of other ways to acheive what you want."                   , inline=False)
-        embed.add_field(name= "Observe", value= "Observe! Check your files, look for hidden objects, go over to see if you missed anything."                                              , inline=False)
-        embed.add_field(name= "Restart", value= "Restart! Most issues can be solved by restarting or copying everything into a new file."                                                 , inline=False)
-        embed.add_field(name= "Update" , value= "Update! Your system might be out of date. Make sure to check drivers, versions, and any bit of software that might be causing the issue.", inline=False)
-        embed.add_field(name= "Search" , value= "Search! Go online, there's a high chance that someone else has had the same problem as you."                                             , inline=False)
+        embed.add_field(name= "Think"  , value= "**T**hink! Use your brain! Start by figuring out where your problem is, and think of other ways to acheive what you want."                   , inline=False)
+        embed.add_field(name= "Observe", value= "**O**bserve! Check your files, look for hidden objects, go over to see if you missed anything."                                              , inline=False)
+        embed.add_field(name= "Restart", value= "**R**estart! Most issues can be solved by restarting or copying everything into a new file."                                                 , inline=False)
+        embed.add_field(name= "Update" , value= "**U**pdate! Your system might be out of date. Make sure to check drivers, versions, and any bit of software that might be causing the issue.", inline=False)
+        embed.add_field(name= "Search" , value= "**S**earch! Go online, there's a high chance that someone else has had the same problem as you."                                             , inline=False)
 
         embed.set_footer(text="If you are still unable to find a solution after following these steps, then you should ask in #help.")
 

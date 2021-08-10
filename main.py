@@ -19,6 +19,7 @@ bot = commands.Bot(
 
 os.environ.setdefault("JISHAKU_HIDE", "1")
 bot.load_extension('jishaku') # pip install -U jishaku
+
 #On_ready Info
 @bot.event
 async def on_ready():
@@ -27,7 +28,7 @@ async def on_ready():
     print('+--------------------------------------------------+')
     print('| logged in as: {}               |'.format(bot.user))
     print('+--------------------------------------------------+')
-    print('| No. of Servers: {}                               |'.format(len(bot.guilds)))
+    print('| No. of Servers: {}                                |'.format(len(bot.guilds)))
     print('| No. of Users: {}                              |'.format(len(bot.users)))
     print('| Bot Prefix: "{}"                                  |'.format(DEFAULT_PREFIX))
     print('+--------------------------------------------------+')
@@ -47,7 +48,7 @@ async def on_ready():
     print('+--------------------------------------------------+') 
     print('\n')    
     print('+--------------------------------------------------+')
-    print('|                     servers:                     |')
+    print('|                     Servers:                     |')
     print('+--------------------------------------------------+')
 
     #Gets the Server Names   
@@ -59,35 +60,3 @@ async def on_ready():
 # TODO bot.remove_command('help') #Removing the Default Help
 # TODO Make a help cmd by subclassing
 bot.run(BOT_TOKEN)
-
-#if os.path.exists("./.env"):
-#    config = dotenv_values("./.env")
-#    token = config['WORKBENCH_BOT_TOKEN']
-#else:
-#    token = os.getenv('WORKBENCH_BOT_TOKEN')
-#
-#for file in os.listdir('bot/cogs'):
-#    if file.endswith('.py'):
-#        bot.load_extension(f'cogs.{file[:-3]}')
-#
-#bot.run(token)
-#
-# This is a template for when writing a 'section' of commands. (Eg. Activies, RoleChanging)
-
-#   import discord
-#   from discord.ext import commands
-#
-#   class Template(commands.Cog):
-#       def __init__(self, bot):
-#           self.bot = bot
-#
-#       @commands.Cog.listener()
-#       async def on_ready(self):
-#           print('CYCLES-X: template loaded')
-#
-#       @commands.command()
-#       async def test(self, ctx):
-#           await ctx.send("This is a template!")
-#
-#   def setup(bot):
-#       bot.add_cog(Template(bot))

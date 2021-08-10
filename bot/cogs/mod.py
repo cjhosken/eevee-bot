@@ -6,14 +6,12 @@ class Moderation(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    #@commands.has_any_role('Host', 'Moderator')
+    @commands.has_any_role('Host', 'Moderator')
     async def wipe(self, ctx, amount = 1):
         await ctx.channel.purge(limit = amount + 1)
     
     @commands.command()
-    #@commands.has_any_role('Host', 'Moderator')
-    @commands.has_permissions(kick_members=True)
-    
+    @commands.has_any_role('Host', 'Moderator')   
     async def slowmode(self, ctx, seconds : int):
         await ctx.channel.edit(slowmode_delay=seconds)
 
@@ -22,7 +20,7 @@ class Moderation(commands.Cog):
         else:
             embed = discord.Embed(color=discord.Color.blue(), description="Slowmode has been disabled.")
 
-        await ctx.message.delete()
+        #await ctx.message.delete()
         await ctx.send(embed=embed)
 
 def setup(bot):
