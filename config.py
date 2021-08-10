@@ -13,6 +13,14 @@ INSTAGRAM_LINK       = 'https://www.instagram.com/blender.community/'
 SUPPORT_SERVER_LINK  = 'https://discord.gg/blendercommunity'
 BOT_GITHUB_LINK      = 'https://github.com/Christopher-Hosken/workbench-bot'
 EMPTY_CHAR           = '‎‎'
+WAITING_EMOJI        = '⏱️'
+DONE_EMOJI           = '✅'
+ERROR_EMOJI          = '‼️'
+THX_EMOJI            = '🙏' 
+UPVOTE_EMOJI         = '👍'
+DOWNVOTE_EMOJI       = '👎'
+API_BASE_LINK        = 'https://denzven.pythonanywhere.com'
+
 #################################################################################################################
 
 # Change log
@@ -27,10 +35,15 @@ COGS = [
 	'bot.cogs.activities',
 	'bot.cogs.auto',
 	'bot.cogs.core',
-	'bot.cogs.emoji',
+	'bot.cogs.NQN',
 	'bot.cogs.mod',
 	'bot.cogs.status_task',
 	'bot.cogs.help',
+ 
+	'bot.cogs.graphs.3dgrem',
+	'bot.cogs.graphs.fgrem',
+	'bot.cogs.graphs.pgrem',
+	'bot.cogs.graphs.derivative_embed',
 ]
 
 INPUTSTATUS = [

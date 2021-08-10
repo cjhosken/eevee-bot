@@ -5,12 +5,6 @@ class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    #@commands.has_any_role('Host', 'Moderator')
-    async def ping(self, ctx):
-        print(f"WORKBENCH: Pinged! {round(self.bot.latency * 1000)}ms")
-        await ctx.reply(f'Pong! {round(self.bot.latency * 1000)}ms')
-
     @commands.Cog.listener()
     async def on_member_join(self, member):
         print(f"WORKBENCH: {member} has joined.")
