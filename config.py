@@ -9,9 +9,9 @@ ERROR_COLOR          = 0xff0000
 BOT_TOKEN           = os.environ['WORKBENCH_BOT_TOKEN']
 
 BOT_DESCRIPTION      = 'Workbench is a bot designed for the Blender Community Discord. Its purpose is to assist server users with blender-related topics, and provide some fun activities for them to use.'
-INSTAGRAM_LINK       = 'https://www.wewe.we'
-SUPPORT_SERVER_LINK  = 'https://www.wewe.we'
-BOT_GITHUB_LINK      = 'https://www.wewe.we'
+INSTAGRAM_LINK       = 'https://www.instagram.com/blender.community/'
+SUPPORT_SERVER_LINK  = 'https://discord.gg/blendercommunity'
+BOT_GITHUB_LINK      = 'https://github.com/Christopher-Hosken/workbench-bot'
 EMPTY_CHAR           = '‎‎'
 #################################################################################################################
 
