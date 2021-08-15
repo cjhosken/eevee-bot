@@ -28,7 +28,6 @@ async def on_ready():
     print('+--------------------------------------------------+')
     print('| logged in as: {}               |'.format(bot.user))
     print('+--------------------------------------------------+')
-    print('| No. of Servers: {}                                |'.format(len(bot.guilds)))
     print('| No. of Users: {}                              |'.format(len(bot.users)))
     print('| Bot Prefix: "{}"                                  |'.format(DEFAULT_PREFIX))
     print('+--------------------------------------------------+')
@@ -46,15 +45,6 @@ async def on_ready():
             print(f"| {cog} has not been loaded")
             print(e)
     print('+--------------------------------------------------+') 
-    print('\n')    
-    print('+--------------------------------------------------+')
-    print('|                     Servers:                     |')
-    print('+--------------------------------------------------+')
-
-    #Gets the Server Names   
-    for guild in bot.guilds:
-        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Humans: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
-        print('+--------------------------------------------------+')   
 
     print('\n')
 # TODO bot.remove_command('help') #Removing the Default Help
