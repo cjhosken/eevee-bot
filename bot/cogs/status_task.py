@@ -20,8 +20,8 @@ class Tasks(commands.Cog):
 
         self.bot.ping = round(self.bot.latency * 1000)
         random_status = random.choice(INPUTSTATUS)
-        await self.bot.change_presence(activity=discord.Game(
-        name = f"{DEFAULT_PREFIX}help | Guilds: {len(self.bot.guilds)} | Members: {len(self.bot.users)} | Ping: {self.bot.ping} ms"))
+        #await self.bot.change_presence(activity=discord.Game(
+        #name = f"{DEFAULT_PREFIX}help | Guilds: {len(self.bot.guilds)} | Members: {len(self.bot.users)} | Ping: {self.bot.ping} ms"))
         await asyncio.sleep(60)
         await self.bot.change_presence(activity=discord.Activity(
             type=discord.ActivityType.playing, name=f"{random_status}"))

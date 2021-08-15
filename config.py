@@ -47,10 +47,10 @@ COGS = [
 ]
 
 INPUTSTATUS = [
-	'Rendering stuff',
-	'Creating Donuts',
-	'Watching Blender tutorials',
-	'Removing overlapped vertices',
-	'Smooth shading',
-	'ctrl+e , g , s'
+	'Rendering',
+	'Making Donuts',
+	'Watching Tutorials',
+	'Removing Overlapped Vertices',
+	'Subdividing',
+	'Chilling with the Devs'
 ]
