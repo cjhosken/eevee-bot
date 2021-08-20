@@ -1,4 +1,5 @@
 import discord
+from config import *
 from discord.ext import commands
 import random
 
