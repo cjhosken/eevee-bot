@@ -28,6 +28,18 @@ class Automation(commands.Cog):
         embed.set_footer(text="If you are still unable to find a solution after following these steps, then you should ask in #help.")
 
         await ctx.reply(embed=embed)
+    
+    async def dontask(self, ctx):
+        embed = discord.Embed(
+            title="Dont Ask To Ask", 
+            description="https://dontasktoask.com/", 
+            color=MAIN_COLOR
+            )
+        
+        embed.set_thumbnail(url="https://i.imgur.com/EuNEjGk.jpg")
+    
+
+        await ctx.reply(embed=embed)
 
 def setup(bot):
     bot.add_cog(Automation(bot))
