@@ -47,10 +47,10 @@ COGS = [
 ]
 
 INPUTSTATUS = [
-	'Rendering',
-	'Making Donuts',
-	'Watching Tutorials',
-	'Removing Overlapped Vertices',
-	'Subdividing',
-	'Chilling with the Devs'
+	'Blender'
+	'With Donuts',
+	'Maya',
+	'Blender 4.1',
+	'Blender With the Devs',
+	'With feelings'
 ]
