@@ -34,7 +34,20 @@ class Automation(commands.Cog):
         embed = discord.Embed(
             title="Dont Ask To Ask", 
             description="https://dontasktoask.com/", 
-            color=MAIN_COLOR
+            color=SECONDARY_COLOR
+            )
+        
+        embed.set_thumbnail(url="https://i.imgur.com/EuNEjGk.jpg")
+    
+
+        await ctx.reply(embed=embed)
+    
+    @commands.command()
+    async def nohello(self, ctx):
+        embed = discord.Embed(
+            title="No Hello", 
+            description="https://www.nohello.com/", 
+            color=SECONDARY_COLOR
             )
         
         embed.set_thumbnail(url="https://i.imgur.com/EuNEjGk.jpg")
