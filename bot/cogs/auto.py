@@ -29,6 +29,7 @@ class Automation(commands.Cog):
 
         await ctx.reply(embed=embed)
     
+    @commands.command()
     async def dontask(self, ctx):
         embed = discord.Embed(
             title="Dont Ask To Ask", 
