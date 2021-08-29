@@ -48,9 +48,9 @@ COGS = [
 
 INPUTSTATUS = [
 	'Blender'
-	'With Donuts',
+	'with Donuts',
 	'Maya',
 	'Blender 4.1',
-	'Blender With the Devs',
-	'With feelings'
+	'Blender with the Devs',
+	'with feelings'
 ]

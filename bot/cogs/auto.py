@@ -45,7 +45,7 @@ class Automation(commands.Cog):
     @commands.command()
     async def nohello(self, ctx):
         embed = discord.Embed(
-            title="No Hello", 
+            title="No Hello!", 
             description="https://www.nohello.com/", 
             color=SECONDARY_COLOR
             )
