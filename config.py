@@ -6,12 +6,12 @@ DEFAULT_PREFIX       = '&'
 MAIN_COLOR           = 0xFFAE19
 SECONDARY_COLOR      = 0x4797dd
 ERROR_COLOR          = 0xff0000
-BOT_TOKEN           = os.environ['WORKBENCH_BOT_TOKEN']
+BOT_TOKEN           = os.environ['EEVEE_BOT_TOKEN']
 
-BOT_DESCRIPTION      = 'Workbench is a bot designed for the Blender Community Discord. Its purpose is to assist server users with blender-related topics, and provide some fun activities for them to use.'
+BOT_DESCRIPTION      = 'EEVEE is a bot designed for the Blender Community Discord. Its purpose is to assist server users with blender-related topics, and provide some fun activities for them to use.'
 INSTAGRAM_LINK       = 'https://www.instagram.com/blender.community/'
 SUPPORT_SERVER_LINK  = 'https://discord.gg/blendercommunity'
-BOT_GITHUB_LINK      = 'https://github.com/Christopher-Hosken/workbench-bot'
+BOT_GITHUB_LINK      = 'https://github.com/Christopher-Hosken/eevee-bot'
 EMPTY_CHAR           = '‎‎'
 WAITING_EMOJI        = '⏱️'
 DONE_EMOJI           = '✅'
@@ -47,10 +47,12 @@ COGS = [
 ]
 
 INPUTSTATUS = [
-	'Blender'
+	'Blender',
 	'with Donuts',
 	'Maya',
+	'Blendini',
+	'Cinema BlenD',
 	'Blender 4.1',
-	'Blender with the Devs',
+	'with the Devs',
 	'with feelings'
 ]
