@@ -1,6 +1,6 @@
-from config import *
 import discord
 from discord.ext import commands
+from config import *
 
 class Automation(commands.Cog):
     def __init__(self, bot):
@@ -8,7 +8,7 @@ class Automation(commands.Cog):
 
     @commands.command(
         aliases=["torga"]
-        )
+    )
     
     async def torus(self, ctx):
         embed = discord.Embed(

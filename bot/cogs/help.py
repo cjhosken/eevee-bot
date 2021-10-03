@@ -4,10 +4,9 @@
 # Imports
 import discord
 from discord.ext import commands
+from config import *
 import datetime
 
-# Config
-from config import *
 p = DEFAULT_PREFIX
 #################################################################################################################
 
@@ -16,7 +15,8 @@ async def get_command_help(command,context):
         embed = discord.Embed(
             colour=MAIN_COLOR,
             title=f'{command.qualified_name}'
-            )
+        )
+        
         use = ""
         aliases = ""
         for cancer in command.clean_params:

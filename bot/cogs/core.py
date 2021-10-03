@@ -1,15 +1,17 @@
 import discord
 from discord.ext import commands
-import json, random, re
+import json
+import random
+import re
 class Core(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        print(f"WORKBENCH: {member} has joined.")
+        print(f"EEVEE: {member} has joined.")
 
-        phrases = open('./bot/data/welcomes.txt').readlines()
+        phrases = json.load(open('./bot/data/welcomes.json'))["welcomes"]
         msg = random.choice(phrases)
         msg = re.sub("@", f"{member.mention}", msg)
 

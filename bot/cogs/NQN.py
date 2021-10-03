@@ -8,12 +8,12 @@ class Emoji(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if message.author.bot:
+        if message.author.bot or not message.guild:
             return
-        if not message.guild:
-            return
+
         pain = message.content.split(" ")
         final_msg = ""
+        
         for e in pain:
             hmm = e.split(":")
             if len(hmm) < 3:
@@ -38,9 +38,13 @@ class Emoji(commands.Cog):
             for attachment in message.attachments:
                 uwu = await attachment.to_file()
                 msg_attachments.append(uwu)
+                
             await message.delete()
+
             webhooks = await message.channel.webhooks()
+
             webhook = discord.utils.get(webhooks, name="WorkBench NQN", user=self.bot.user)
+
             if webhook is None:
                 webhook = await message.channel.create_webhook(name="WorkBench NQN")
 
