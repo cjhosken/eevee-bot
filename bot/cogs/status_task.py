@@ -18,5 +18,5 @@ class Tasks(commands.Cog):
         await asyncio.sleep(120)
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=f"{random_status}"))
 
-def setup(bot):
-	bot.add_cog(Tasks(bot))
+async def setup(bot):
+	await bot.add_cog(Tasks(bot))

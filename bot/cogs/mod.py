@@ -23,5 +23,23 @@ class Moderation(commands.Cog):
         await ctx.message.delete()
         await ctx.send(embed=embed)
 
-def setup(bot):
-    bot.add_cog(Moderation(bot))
+    @commands.command()
+    @commands.has_any_role('Host')   
+    async def prune(self, ctx):
+        print("Pruning...")
+
+        i = 0
+
+        for member in ctx.guild.members:
+            if (len(member.roles) < 2):
+                i+=1
+                await ctx.guild.kick(member)
+
+        print (i, " Members Pruned.")
+
+        await ctx.message.delete()
+
+
+
+async def setup(bot):
+    await bot.add_cog(Moderation(bot))
